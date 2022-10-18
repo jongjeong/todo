@@ -62,10 +62,28 @@ const App = ({childern}) => {
     }
   };
 
+  const onCheckToggle = (id) => {
+    /**
+     *todos 배열은 새로운 함수를 리턴해야함
+     클릭한 객체의 id를 확인하고 그 id와 일치하는 객체를 찾아서
+     해당 객체의 checked속성의 boolen값을 반대로 바꿔줘야함
+
+     map 함수를 이용하여 todos에서 todo를 받고
+     todo.id와 인자로 받은 id가 같으면
+     spred연산자를 이용하여 todo가 가지고 있는 객체 속성을 모두 가져오고 checked의 boolen값을 반대로 바꿔줌
+     같지 않다면 그냥 todo를 반환
+     */
+    setTodos(todos => todos.map(todo => (todo.id === id ? {...todo, checked: !todo.checked} : todo)))
+  };
+
+
+
+
+
   return (
 
       <Template todosLength={todos.length}>
-        <TodoList todos={todos}/>
+        <TodoList todos={todos} onCheckToggle={onCheckToggle}/>
         <div className="add-todo-button" onClick={onInsertToggle}>
           <MdAddCircle/>
         </div>
