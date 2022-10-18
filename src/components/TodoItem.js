@@ -15,7 +15,8 @@ const TodoItem = ({todo, onCheckToggle}) => {
         <div className="TodoItem">
             <div className={`content ${checked ? "checked" : ""}`}>
                 {checked ? (
-                    <MdCheckBox 
+                    <MdCheckBox
+                    // MdCheckBox클릭 시 onCheckToggle()함수를 실행시킴 todo에 있는 id를 인자로 넣어서
                       onClick={()=>{
                         onCheckToggle(id);
                       }}

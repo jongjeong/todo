@@ -9,10 +9,11 @@ import TodoList from "./components/TodoList";
 
 
 // 함수 바깥에 만들어주는 이유는 함수가 새로 리렌더링 될 때마다 계속 처음 값으로 돌아가기 때문
-const nextId = 4;
+
+let nextId = 4;
 
 // 함수형 컴포넌트
-const App = ({childern}) => {
+const App = ({}) => {
 
   const [insertToggle, setInsertToggle] = useState(false)
 
@@ -89,9 +90,10 @@ const App = ({childern}) => {
         </div>
         {/* nInsertToggl도 TodoInsert에서 필요하기 때문에 인자로 사용할 수 있도록 넘겨준다  */}
         {/* onInsertTodo 함수를 TodoInsert에 인자로 넘겨줌 -> TodoInsert에서 해당함수를 받아서 쓸 수 있게 됨*/}
-        {insertToggle && <TodoInsert 
+        {insertToggle && (<TodoInsert 
         onInsertToggle={onInsertToggle} 
-        onInsertTodo={onInsertTodo}/>}
+        onInsertTodo={onInsertTodo}/>
+        )}
       </Template>
       
       
