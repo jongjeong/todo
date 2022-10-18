@@ -15,7 +15,9 @@ let nextId = 4;
 // 함수형 컴포넌트
 const App = ({}) => {
 
-  const [insertToggle, setInsertToggle] = useState(false)
+  const [selectedTodo, setSelectedTodo] = useState(null);
+
+  const [insertToggle, setInsertToggle] = useState(false);
 
   const [todos, setTodos] = useState([ 
     {
@@ -74,25 +76,65 @@ const App = ({}) => {
      spred연산자를 이용하여 todo가 가지고 있는 객체 속성을 모두 가져오고 checked의 boolen값을 반대로 바꿔줌
      같지 않다면 그냥 todo를 반환
      */
-    setTodos(todos => todos.map(todo => (todo.id === id ? {...todo, checked: !todo.checked} : todo)))
+    setTodos(todos => 
+      todos.map(todo => 
+        todo.id === id ? {...todo, checked: !todo.checked} : todo
+      )
+    );
   };
 
 
+  //이미 생성되어 있는 기존의 todo 수정하기
+  const onChangeSelectedTodo = (todo) => {
+    setSelectedTodo(todo)
+  };
+
+
+  // todo를 삭제하는 함수
+  const onRemove = (id) => {
+    // todo를 삭제하니까 창이 닫히게
+    onInsertToggle();
+    // todos를 변경하기 위해 filter를 이용하여 todo에 id가 인자로 받아온 id랑 일치하지 않는 것만 리턴하기
+    // 그리고 onRemove를 TodoInsert컴포넌트에 전달
+    setTodos(todos => todos.filter(todo => todo.id !== id));
+
+  };
+
+  // todo 수정 함수 인자는 id, tesxt 2개 id는 id를 비교하기 위해 text는 새로운 text로 대체하기 위해
+  const onUpdate = (id, text) => {
+    onInsertToggle();
+    // 아닌경우 일반적인 todo item들은 todo로 반환
+    setTodos(todos => todos.map(todo => todo.id === id ? {...todo, text} : todo))
+
+  }
+
+ 
 
 
 
   return (
 
       <Template todosLength={todos.length}>
-        <TodoList todos={todos} onCheckToggle={onCheckToggle}/>
+        <TodoList 
+          todos={todos} 
+          onCheckToggle={onCheckToggle}
+          //onInsertToggle={onInsertToggle}을 전달해 기존에 추가해놨던 todolist를 클릭시에도 동작시키기 위함
+          onInsertToggle={onInsertToggle}
+          onChangeSelectedTodo={onChangeSelectedTodo}
+        />
         <div className="add-todo-button" onClick={onInsertToggle}>
           <MdAddCircle/>
         </div>
         {/* nInsertToggl도 TodoInsert에서 필요하기 때문에 인자로 사용할 수 있도록 넘겨준다  */}
         {/* onInsertTodo 함수를 TodoInsert에 인자로 넘겨줌 -> TodoInsert에서 해당함수를 받아서 쓸 수 있게 됨*/}
-        {insertToggle && (<TodoInsert 
-        onInsertToggle={onInsertToggle} 
-        onInsertTodo={onInsertTodo}/>
+        {insertToggle && (
+          <TodoInsert
+            selectedTodo={selectedTodo}
+            onInsertToggle={onInsertToggle} 
+            onInsertTodo={onInsertTodo}
+            onRemove={onRemove}
+            onUpdate={onUpdate}
+          />
         )}
       </Template>
       

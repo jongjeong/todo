@@ -9,7 +9,7 @@ import "./TodoItem.css"
 //     )
 // }
 
-const TodoItem = ({todo, onCheckToggle}) => {
+const TodoItem = ({todo, onCheckToggle, onInsertToggle, onChangeSelectedTodo}) => {
     const {id, text, checked} = todo;
     return (
         <div className="TodoItem">
@@ -28,7 +28,15 @@ const TodoItem = ({todo, onCheckToggle}) => {
                         }}
                     />
                     )}
-                <div className="text">{text}</div>
+                <div 
+                className="text" 
+                onClick={()=>{
+                    // 현재 가지고 있는 todo를 넣음
+                    onChangeSelectedTodo(todo);
+                    // 토글을 닫음
+                    onInsertToggle();
+                }}
+                >{text}</div>
             </div>
         </div>
     )
