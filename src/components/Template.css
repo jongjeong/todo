@@ -1,0 +1,18 @@
+.Template {
+    padding-top: 20px;
+    /* max-height값은 viewport값에 맞게 전체를 보여 주기 위해서*/
+    max-height: 100vh;
+}
+
+.title {
+    width: 90vw;
+
+    /* 좌우를 auto로 주면서 자동으로 가운데에 위치하도록 */
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #6c567b;
+}

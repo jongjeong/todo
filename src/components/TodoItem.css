@@ -1,0 +1,60 @@
+.TodoItem {
+    
+    margin-left: auto;
+    margin-right: auto;
+    
+    border-radius: 5px;
+    box-shadow: 1px 2px 5px 1px #f67280;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+
+    /* 맨 위에 있는 TodoItem의 margin-top까지 적용  */
+    /* margin-top: 15px */
+
+}
+
+/* 맨 위에 있는 TodoItem의 margin-top은 제외하고 사이사이 간격만 띄울 수 있음 */
+.TodoItem + .TodoItem {
+    margin-top: 15px
+}
+
+.content {
+    /* 해당 위치에 마우스가 올라가면 마우스커서가 손가락 클릭 모양으로 바뀜 */
+    cursor: pointer;
+
+
+    /* 
+    flex: 1;은
+    flex-basis가 0이므로 점유 크기를 0으로 만든 후 화면 비율에 따라 유연하게 늘어나거나 줄어들 수 있음을 만드는 속성
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0% */
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.content svg {
+    font-size: 1.5rem;
+    color: #f67280
+}
+
+/* content컴포넌트안에 있는 text클래스를 가진 요소에 적용 */
+.content .text {
+    margin-left: 0.5rem;
+    flex: 1;
+}
+
+/* .className.className 바로 연달아 사용할 경우
+컨텐츠에 체크가 되어있을 경우 해당 컴포넌트의 text클래스를 가진요소에 적용*/
+.content.checked .text {
+    color: #6c567b;
+
+    /* 취소선 */
+    text-decoration: line-through;
+    /* cursor: pointer; 안해줘도 될것같음? 추후에 문제 발생 시 살리기*/
+
+    /* 불투명도 */
+    opacity: 0.6;
+}
