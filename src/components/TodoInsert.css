@@ -31,7 +31,7 @@ form {
     width: 300px;
     height: 150px;
     border-radius: 5px;
-    box-shadow: 1px 2px 5px 1px #f67280;
+    box-shadow: 1px 2px 5px 1px #c872f6;
 
     background: white;
 }
@@ -43,7 +43,7 @@ form > input {
     background: none;
     outline: none;
     border: none;
-    border-bottom: 1px solid #f67280;
+    border-bottom: 1px solid #c872f6;
 
     padding: 0.5rem;
     font-size: 1.125rem;
@@ -56,7 +56,7 @@ form > button {
     border: none;
     /* input과 boutton 사이 20px  */
     padding-top: 20px;
-    color: #f67280;
+    color: #c872f6;
     padding-left: 1rem;
     padding-right: 1rem;
     font-size: 1.5rem;;
@@ -70,7 +70,7 @@ form > button {
 /* rewrite안에 있는 svg파일(아이콘)에 적용 */
 .rewrite > svg {
     padding-top: 20px;
-    color: #f67280;
+    color: #c872f6;
     padding-left: 1rem;
     padding-right: 1rem;
     font-size: 1.5rem;

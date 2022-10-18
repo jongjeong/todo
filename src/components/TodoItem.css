@@ -4,7 +4,7 @@
     margin-right: auto;
     
     border-radius: 5px;
-    box-shadow: 1px 2px 5px 1px #f67280;
+    box-shadow: 1px 2px 5px 1px #c872f6;
     padding: 1rem;
     display: flex;
     align-items: center;
@@ -37,7 +37,7 @@
 
 .content svg {
     font-size: 1.5rem;
-    color: #f67280
+    color: #c872f6
 }
 
 /* content컴포넌트안에 있는 text클래스를 가진 요소에 적용 */
